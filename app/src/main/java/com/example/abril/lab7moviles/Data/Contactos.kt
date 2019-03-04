@@ -18,9 +18,9 @@ interface Contactos {
         @Delete
         fun delete(contact: ContactosImp)
 
-        @Query("DELETE FROM contact_table")
+        @Query("DELETE FROM contactos")
         fun deleteAllContacts()
 
-        @Query("SELECT * FROM contact_table ORDER BY priority DESC")
+        @Query("SELECT * FROM contactos ORDER BY idp DESC")
         fun getAllContacts(): LiveData<List<ContactosImp>>
     }

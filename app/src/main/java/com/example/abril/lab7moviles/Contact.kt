@@ -1,7 +1,10 @@
 package com.example.abril.lab7moviles
 
+import android.os.AsyncTask
+import com.example.abril.lab7moviles.Data.ContactoDataBase
+import com.example.abril.lab7moviles.Data.ContactosImp
+
 class Contact{
-    constructor(){}
 
     constructor(id: Int,nombre: String, telefono: String, correo: String){
         this.id = id

@@ -19,7 +19,7 @@ abstract class ContactoDataBase: RoomDatabase() {
                 synchronized(ContactoDataBase::class){
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        ContactoDataBase::class.java,"contact_database"
+                        ContactoDataBase::class.java,"DBP"
                     )
                         .fallbackToDestructiveMigration()
                         .addCallback(roomCallback)
@@ -43,12 +43,12 @@ abstract class ContactoDataBase: RoomDatabase() {
     }
 
     class PopulateDbAsyncTask(db: ContactoDataBase?) : AsyncTask<Unit, Unit, Unit>(){
-        private val contactDao = db?.contactDao()
+        private val contact = db?.contactDao()
 
         override fun doInBackground(vararg p0: Unit?) {
-            contactDao?.insert(ContactosImp("Pepito","5123467","pepito@gmail.com",1))
-            contactDao?.insert(ContactosImp("Pepita","7643215","pepita@gmail.com",2))
-            contactDao?.insert(ContactosImp("Juanito","555555","juanitoelbonito@gmail.com",3))
+            contact?.insert(ContactosImp("Abril","45789215","pal18198@uvg.edu.gt",1))
+            contact?.insert(ContactosImp("Andy","78501248","AndyPandy@gmail.com",2))
+            contact?.insert(ContactosImp("Alex","85624789","AlexP@gmail.com",3))
         }
     }
 

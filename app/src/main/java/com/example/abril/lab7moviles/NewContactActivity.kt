@@ -1,12 +1,16 @@
 package com.example.abril.lab7moviles
 
 import android.content.Intent
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.abril.lab7moviles.Data.ContactoDataBase
+import com.example.abril.lab7moviles.Data.ContactosImp
+import com.example.abril.lab7moviles.Data.Repositorio
 import com.example.abril.lab7moviles.MainActivity
 import com.example.abril.lab7moviles.R
 
@@ -16,28 +20,17 @@ class NewContactActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_contact)
 
-        val contactos = (this.application as MyApplication)
+        val contactos = (this.application as Repositorio)
 
         val botonReturn = findViewById<Button>(R.id.buttonReturn)
         botonReturn.setOnClickListener { val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)}
+            startActivity(intent)}
 
-        val idInput = findViewById<EditText>(R.id.idInput)
-        val nameInput = findViewById<EditText>(R.id.nameInput)
-        val phoneInput = findViewById<EditText>(R.id.numInput)
-        val mailInput = findViewById<EditText>(R.id.mailInput)
+        val idI = findViewById<EditText>(R.id.idInput)
+        val name = findViewById<EditText>(R.id.nameInput)
+        val tel = findViewById<EditText>(R.id.numInput)
+        val mail = findViewById<EditText>(R.id.mailInput)
 
-        val botonAgregar = findViewById<Button>(R.id.buttonCreate)
-        botonAgregar.setOnClickListener {
-            val name = nameInput.text.toString()
-            contactos.addContact(idInput,nameInput, phoneInput, mailInput)
-            val toastAgregado = Toast.makeText(this.applicationContext,"Se agrego a ${name} a sus contactos",Toast.LENGTH_LONG)
-            toastAgregado.show()
-            val intent = Intent(this,MainActivity::class.java)
-            startActivity(intent)
-        }
-
-
-
+        val agregar = findViewById<Button>(R.id.buttonCreate)
     }
 }

@@ -10,6 +10,8 @@ import android.widget.Toast
 
 
 import com.example.abril.lab7moviles.ContactViewActivity
+import com.example.abril.lab7moviles.Data.ContactoDataBase
+import com.example.abril.lab7moviles.Data.Repositorio
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,30 +23,7 @@ class MainActivity : AppCompatActivity() {
         botonNewContact.setOnClickListener{val intent = Intent(this, NewContactActivity::class.java)
             startActivity(intent)}
 
-        val contactos = (this.application as MyApplication)
+        val contactos = (this.application as Repositorio)
 
-        val contactList = findViewById<ListView>(R.id.contactList)
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, contactos.getContacts())
-        contactList.adapter = adapter
-        contactos.refreshData(contactList)
-
-        contactList.setOnItemClickListener { parent, view, position, id ->
-            contactos.currentContact= contactos.getContacts().get(position)
-            val intent = Intent(this, ContactViewActivity::class.java)
-            startActivity(intent)
-        }
-
-        contactList.setOnItemLongClickListener { parent, view, position, id ->
-            contactos.deleteContact(position)
-            adapter.notifyDataSetChanged()
-            contactos.refreshData(contactList)
-            val toastEliminado = Toast.makeText(
-                applicationContext,
-                "Se ha eliminado el contacto",
-                Toast.LENGTH_LONG
-            )
-            toastEliminado.show()
-            true
-        }
     }
 }

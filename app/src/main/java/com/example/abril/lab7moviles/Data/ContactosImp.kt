@@ -3,8 +3,8 @@ package com.example.abril.lab7moviles.Data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "contact_table")
-class ContactosImp (var name: String,var phone:String, var mail :String, var priority: Int){
+@Entity(tableName = "contactos")
+class ContactosImp (var nombre: String,var tel:String, var mail :String, var idp: Int){
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 }
